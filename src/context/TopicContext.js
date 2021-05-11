@@ -7,6 +7,13 @@ const getTopics = (data) => {
         console.log(result.data)
     })
 }
+
+const createTopic = data => {
+    return authAxios.post("/createtopic", data);
+};
+
+
 export default{
-    getTopics
+    getTopics,
+    createTopic
 };
