@@ -14,8 +14,8 @@ const TopicList = () =>{
     const retrieveTopics = () =>{
         TopicContextService.getTopics()
             .then(response =>{
-                setTopics({response.data});
-                console.log({response.data});
+                setTopics(response.data);
+                console.log(response.data);
             })
             .catch(e =>{
                 console.log(e);
