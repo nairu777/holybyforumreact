@@ -21,7 +21,7 @@ code {
   monospace;
 }
 
-.userInfo,
+.topicField,
 ._loginRegister{
   background-color: #ffffff;
   padding: 20px;
@@ -111,22 +111,22 @@ code {
   border-color: #24b273;
 }
 
-.userInfo{
+.topicField{
   text-align: center;
 }
 
-.userInfo ._img{
+.topicField ._img{
   font-size: 50px;
 }
-.userInfo h1{
+.topicField h1{
   text-transform: capitalize;
   margin: 10px 0;
 }
-.userInfo ._email{
+.topicField ._email{
   margin: 10px 0;
   color: #555555;
 }
-.userInfo button{
+.topicField button{
   margin-top: 5px;
   background: #ff304f;
   color: #ffffff;
@@ -139,8 +139,9 @@ code {
   cursor: pointer;
   transition: background .3s;
 }
-.userInfo button:hover{
+.topicField button:hover{
   border-color: #ff304f;
   color: #ff304f;
   background: #ffffff;
 }
+

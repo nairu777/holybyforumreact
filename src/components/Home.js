@@ -9,21 +9,18 @@ import Topics from './topics/Topics'
 
 
 
-function Home(){
+function Home(props){
 
-    const {rootState,logoutUser} = useContext(MyContext);
-    const {isAuth,theUser,showLogin} = rootState;
+    const {rootState} = useContext(MyContext);
+    const {isAuth,showLogin} = rootState;
 
 
     // If user Logged in
     if(isAuth)
     {
         return(
-            <div className="userInfo">
-                <div className="_img"><span role="img" aria-label="User Image">👦</span></div>
-                <h1>{theUser.username}</h1>
-                <div className="_email"><span>{theUser.username}</span></div>
-                <button onClick={logoutUser}>Logout</button>
+            <div style={props.style} className="topicField">
+
                 <Topics/>
             </div>
         )

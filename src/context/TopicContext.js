@@ -5,6 +5,7 @@ import {authAxios} from "./http-common"
 const getTopics = (data) => {
     return authAxios.get("/topics?page=" + data.page).then(result => {
         console.log(result.data)
+        return result.data
     })
 }
 

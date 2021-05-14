@@ -83,7 +83,9 @@ class MyContextProvider extends Component{
                     ...this.state,
                     isAuth:true,
                     theUser:data[0].username
+
                 });
+                console.log(data[0].username)
             }
 
         }
