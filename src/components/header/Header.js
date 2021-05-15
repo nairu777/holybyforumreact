@@ -1,20 +1,24 @@
 import React, {useContext} from 'react'
 import {MyContext} from '../../context/MyContext'
+import { Link} from 'react-router-dom';
+
 
 
 function Header(props) {
     const {rootState, logoutUser} = useContext(MyContext);
-    const {isAuth, theUser, showLogin} = rootState;
+    const {isAuth, theUser} = rootState;
 
 
     // If user Logged in, logoutbutton in header
     if (isAuth) {
         return (
             <div style={props.style} >
-                <div><h1>Holybe forum</h1></div>
-                <div className="_img"><span role="img" aria-label="User Image">👦</span></div>
-                <div><span>{theUser}</span></div>
-                <div><button onClick={logoutUser}>Logout</button></div>
+                <div  style={props.style} ><h1>Holybe forum</h1></div>
+                <div>
+                    <div  style={props.style}  className="_img"><span role="img" aria-label="User Image">👦</span></div>
+                    <div  style={props.style} ><Link to="/profile"><span>{theUser}</span></Link></div>
+                    <div  style={props.style} ><button onClick={logoutUser}>Logout</button></div>
+                </div>
             </div>
         )
     }
@@ -25,8 +29,6 @@ function Header(props) {
             <h1>Holybe forum</h1>
         </div>
     )}
-
-
 }
 
 export default Header;

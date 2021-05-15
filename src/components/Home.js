@@ -7,8 +7,6 @@ import Login from './Login'
 import Register from './Register'
 import Topics from './topics/Topics'
 
-
-
 function Home(props){
 
     const {rootState} = useContext(MyContext);
@@ -20,7 +18,6 @@ function Home(props){
     {
         return(
             <div style={props.style} className="topicField">
-
                 <Topics/>
             </div>
         )

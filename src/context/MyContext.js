@@ -1,5 +1,5 @@
 import React, { createContext,Component } from "react";
-import {publicAxios} from "./http-common"
+import {authAxios, publicAxios} from "./http-common"
 export const MyContext = createContext();
 
 
@@ -64,6 +64,7 @@ class MyContextProvider extends Component{
 
     }
 
+
     // Checking user logged in or not
     isLoggedIn = async () => {
         const loginToken = localStorage.getItem('loginToken');
@@ -99,6 +100,7 @@ class MyContextProvider extends Component{
             registerUser:this.registerUser,
             loginUser:this.loginUser,
             logoutUser:this.logoutUser,
+
         }
         return(
             <MyContext.Provider value={contextValue}>
