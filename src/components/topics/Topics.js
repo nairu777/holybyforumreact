@@ -1,6 +1,6 @@
 import React, {useContext}from 'react'
 import TopicList from './TopicsList'
-import AddTopic from "./AddTopic";
+
 
 
 function Topics() {
@@ -11,9 +11,7 @@ function Topics() {
             <div>
                 <TopicList/>
             </div>
-            <div>
-                <AddTopic/>
-            </div>
+
         </div>
     )
 

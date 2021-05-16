@@ -4,7 +4,7 @@ import UserRenderer from "./userRenderer";
 
 
 const MyProfileInformation = () =>{
-    const [user, setUser] = useState([]);
+    const [users, setUsers] = useState([]);
 
     useEffect(()=>{
         retrieveUser();
@@ -13,8 +13,8 @@ const MyProfileInformation = () =>{
     const retrieveUser = () =>{
         UserContext.getUser()
             .then(response =>{
-                setUser(response.data);
-                console.log(response.data);
+                setUsers(response);
+                console.log(response);
             })
             .catch(e =>{
                 console.log(e);
@@ -25,9 +25,8 @@ const MyProfileInformation = () =>{
 
     return(
         <div>
-            {user.map((user)=>(
-                <UserRenderer username={user.username} email={user.email} status={user.status} />
-            ))}
+            <h4>profiel</h4>
+                <UserRenderer username={users[0].username} email={users[0].email} status={users[0].status} />
         </div>
     )
 };

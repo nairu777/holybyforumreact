@@ -13,8 +13,17 @@ const createTopic = data => {
     return authAxios.post("/createtopic", data);
 };
 
+const getTopicReactions = () =>{
+    return authAxios.get("/topics/6").then(result => {
+        console.log(result.data)
+        return result.data
+    })
+}
+
+
 
 export default{
     getTopics,
-    createTopic
+    createTopic,
+    getTopicReactions
 };
