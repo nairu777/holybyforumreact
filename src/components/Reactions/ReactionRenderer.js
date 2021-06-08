@@ -5,17 +5,10 @@ const textEllipsisStyle = {
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
 }
-const TopicRenderer = (props) => {
+const ReactionRenderer = (props) => {
     return (
         <div style={{borderRadius: 8, display:"flex", padding:8, textAlign:"left", backgroundColor:"lightgray", marginTop:8}} >
 
-            <Link to={{
-                pathname:"/topicreactions",
-                topicProps:{
-                    topicid: props.id
-                }}}>
-                <span style={{...textEllipsisStyle, fontSize: 20}}>{props.title}</span>
-            </Link>
             <span style={{...textEllipsisStyle, fontSize: 14}}>{props.username}</span>
             <span style={{...textEllipsisStyle, fontSize: 12}}>{props.content}</span>
 
@@ -23,4 +16,4 @@ const TopicRenderer = (props) => {
     )
 }
 
-export default TopicRenderer
+export default ReactionRenderer

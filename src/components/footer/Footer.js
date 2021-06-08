@@ -1,14 +1,12 @@
-import React from 'react';
-import AddTopicPopup from "../topics/AddTopicPopup";
+import React, {useState} from 'react';
 import AddTopic from "../topics/AddTopic";
 
+
 function Footer () {
+
     return (
         <div>
-            <h3>add topic</h3>
-
-            <AddTopic/>
-
+            <span>this is the footer</span>
 
         </div>
     );
