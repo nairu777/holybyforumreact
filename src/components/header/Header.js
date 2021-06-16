@@ -16,7 +16,7 @@ function Header(props) {
                 <div  style={props.style} ><h1>Holybe forum</h1></div>
                 <div>
                     <div  style={props.style}  className="_img"><span role="img" aria-label="User Image">👦</span></div>
-                    <div  style={props.style} ><Link to="/profile"><span>{theUser}</span></Link></div>
+                    <div  style={props.style} ><Link to="/profile"><span>{theUser.username}</span></Link></div>
                     <div  style={props.style} ><button onClick={logoutUser}>Logout</button></div>
                 </div>
             </div>

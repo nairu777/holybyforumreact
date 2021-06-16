@@ -19,7 +19,7 @@ class MyContextProvider extends Component{
     state = {
         showLogin:true,
         isAuth:false,
-        theUser:null,
+        theUser: {}
     }
 
     // Toggle between Login & Signup page
@@ -79,18 +79,17 @@ class MyContextProvider extends Component{
             const {data} = await publicAxios.get('currentuser');
 
             // If user information is successfully received
-            if(data.message === "success" && data[0].username){
+            if(data.message === "success" && data.user){
                 this.setState({
                     ...this.state,
                     isAuth:true,
-                    theUser:data[0].username
-
+                    theUser:data.user
                 });
-                console.log(data[0].username)
             }
 
         }
     }
+
 
     render(){
         const contextValue = {
