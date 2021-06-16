@@ -7,6 +7,7 @@ import Header from './components/header/Header';
 import Profile from './components/profile/Profile';
 import Footer from "./components/footer/Footer";
 import Reactions from "./components/Reactions/Reactions";
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   return (

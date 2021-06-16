@@ -1,6 +1,8 @@
 import React, {useContext} from 'react'
 import {MyContext} from '../../context/MyContext'
 import { Link} from 'react-router-dom';
+import logo from './../../userlogo.png';
+import {Container, Row, Col, Image, Jumbotron} from "react-bootstrap";
 
 
 
@@ -13,12 +15,23 @@ function Header(props) {
     if (isAuth) {
         return (
             <div style={props.style} >
-                <div  style={props.style} ><h1>Holybe forum</h1></div>
-                <div>
-                    <div  style={props.style}  className="_img"><span role="img" aria-label="User Image">👦</span></div>
-                    <div  style={props.style} ><Link to="/profile"><span>{theUser.username}</span></Link></div>
-                    <div  style={props.style} ><button onClick={logoutUser}>Logout</button></div>
-                </div>
+                <Jumbotron>
+
+                <div><h1>Holybe forum</h1></div>
+                </Jumbotron>
+                <Container>
+                    <Row>
+                        <Col xs={6} md={4}>
+                            <Image src={logo} fluid/>
+                        </Col>
+                        <Col xs={6} md={4}>
+                            <div  style={props.style} ><Link to="/profile"><span>{theUser.username}</span></Link></div>
+                        </Col>
+                        <Col xs={6} md={4}>
+                            <div  style={props.style} ><button onClick={logoutUser}>Logout</button></div>
+                        </Col>
+                    </Row>
+                </Container>
             </div>
         )
     }
