@@ -21,7 +21,7 @@ function Header(props) {
                 </Jumbotron>
                 <Container>
                     <Row>
-                        <Col xs={6} md={4}>
+                        <Col xs={3} md={1}>
                             <Image src={logo} fluid/>
                         </Col>
                         <Col xs={6} md={4}>
