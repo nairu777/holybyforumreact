@@ -1,5 +1,6 @@
-import React, {useContext, useState} from 'react'
-import {MyContext} from '../context/MyContext'
+import React, {useContext, useState} from 'react';
+import { MyContext } from '../context/MyContext';
+import { Container, Row, Col, Alert, Form, Button } from "react-bootstrap";
 
 function Login(){
 
@@ -61,22 +62,45 @@ function Login(){
 
     return(
         <div className="_loginRegister">
-            <h1>Login</h1>
-            <form  onSubmit={submitForm} noValidate>
-                <div className="form-control">
-                    <label>username</label>
-                    <input name="username" type="username" required placeholder="Enter your username" value={state.userInfo.username} onChange={onChangeValue} />
-                </div>
-                <div className="form-control">
-                    <label>Password</label>
-                    <input name="password" type="password" required placeholder="Enter your password" value={state.userInfo.password} onChange={onChangeValue} />
-                </div>
-                {errorMsg}
-                {successMsg}
-                <div className="form-control">
-                    <button type="submit">Login</button>
-                </div>
-            </form>
+            <Container fluid>
+                <Row ClassName="justify-content-md-center">
+                    <Col xs="6" lg="6">
+                        <h1>Login</h1>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Form>
+                            <Form.Group className="mb-3" controlId="username">
+                                <Form.Label>Username</Form.Label>
+                                <Form.Control 
+                                    type="text" 
+                                    placeholder="Enter username" 
+                                    value={state.userInfo.username} 
+                                    onChange={onChangeValue} />
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" controlId="password">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control 
+                                    type="password" 
+                                    placeholder="Password"
+                                    value={state.userInfo.username} 
+                                    onChange={onChangeValue} />
+                            </Form.Group>
+                            <Button variant="primary" type="submit">
+                                Login
+                            </Button>
+                        </Form>
+                        <Alert variant="danger">
+                            {errorMsg}
+                        </Alert>
+                        <Alert variant="success">
+                            {successMsg}
+                        </Alert>
+                    </Col>
+                </Row>
+            </Container>
             <div className="_navBtn">
                 <button onClick={toggleNav}>Register</button>
             </div>

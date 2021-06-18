@@ -2,8 +2,7 @@ import React, {useContext} from 'react'
 import {MyContext} from '../../context/MyContext'
 import { Link} from 'react-router-dom';
 import logo from './../../userlogo.png';
-import {Container, Row, Col, Image, Jumbotron} from "react-bootstrap";
-
+import {Navbar, Container, Row, Col, Image, Jumbotron} from "react-bootstrap";
 
 
 function Header(props) {
@@ -39,7 +38,9 @@ function Header(props) {
     else{
     return (
         <div>
-            <h1>Holybe forum</h1>
+            <Navbar bg="light">
+                <Navbar.Brand href="#home">Holybe forum</Navbar.Brand>
+            </Navbar>
         </div>
     )}
 }
