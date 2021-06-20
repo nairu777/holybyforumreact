@@ -27,7 +27,7 @@ const TopicList = () =>{
         <div>
             <h4>Topic list</h4>
                 {topics.map((topic)=>(
-                    <TopicRenderer title={topic.title} username ={topic.username} content={topic.content} />
+                    <TopicRenderer title={topic.title} username ={topic.username} content={topic.content} id={topic.id} />
                 ))}
         </div>
     );

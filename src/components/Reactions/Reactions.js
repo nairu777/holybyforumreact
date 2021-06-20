@@ -4,13 +4,14 @@ import ReactionsList from "./ReactionList";
 
 
 
-function Reactions() {
+function Reactions(props) {
+    const topicid = props.location.search.split("=")[1]
 
     return(
         <div>
             <h1>Topic with Reaction</h1>
             <div>
-                <ReactionsList/>
+                <ReactionsList topicid={topicid}/>
             </div>
 
         </div>

@@ -2,20 +2,25 @@ import React, { useState, useEffect } from "react";
 import TopicContextService from "../../context/TopicContext";
 import TopicRenderer from "../topics/TopicRenderer";
 import ReactionRenderer from "./ReactionRenderer";
+import {Link} from "react-router-dom";
 
 //render a topic and a list of reactions
 
-const ReactionsList = () =>{
+const ReactionsList = (props) =>{
     const [reactions, setReactions] = useState([]);
     const [topics, setTopics ] = useState([])
 
     useEffect(()=>{
         retrieveReactions();
-    },[]);
+        retrieveTopics();
+    },[props.topicid]);
 
+    function onChange(){
+        retrieveReactions()
+    }
 
     const retrieveReactions = () =>{
-        TopicContextService.getTopicReactions()
+        TopicContextService.getTopicReactions(props.topicid)
             .then(response =>{
                 setReactions(response);
                 console.log(response);
@@ -25,16 +30,12 @@ const ReactionsList = () =>{
             })
     };
 
-    useEffect(()=>{
-        retrieveTopics();
-    },[]);
-
 
     const retrieveTopics = () =>{
-        TopicContextService.getTopicById()
+        TopicContextService.getTopicById(props.topicid)
             .then(response =>{
-                setTopics(response.data);
-                console.log(response.data);
+                setTopics(response);
+                console.log(response);
             })
             .catch(e =>{
                 console.log(e);
@@ -45,10 +46,16 @@ const ReactionsList = () =>{
         <div>
             <h4>Topic with reaction list</h4>
             {topics.map((topic)=>(
-                <TopicRenderer  title={topic.title} username ={topic.username} content={topic.content} />
+                <div>
+                    <span >{topic.title}</span>
+                    <span >{topic.username}</span>
+                    <span >{topic.content}</span>
+                </div>
+
             ))}
+
             {reactions.map((reaction)=>(
-                <ReactionRenderer username ={reaction.username} content={reaction.content} />
+                <ReactionRenderer key={reaction.id} username ={reaction.username} userid={reaction.user_id} content={reaction.content} reactionid={reaction.id} onChange={onChange}/>
             ))}
         </div>
     );

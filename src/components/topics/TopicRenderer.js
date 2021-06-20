@@ -11,9 +11,8 @@ const TopicRenderer = (props) => {
 
             <Link to={{
                 pathname:"/topicreactions",
-                topicProps:{
-                    topicid: props.id
-                }}}>
+                search:"?topicid=" + props.id
+                }}>
                 <span style={{...textEllipsisStyle, fontSize: 20}}>{props.title}</span>
             </Link>
             <span style={{...textEllipsisStyle, fontSize: 14}}>{props.username}</span>
