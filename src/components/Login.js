@@ -1,111 +1,103 @@
-import React, {useContext, useState} from 'react';
+import React, { useContext, useState } from 'react';
 import { MyContext } from '../context/MyContext';
-import { Container, Row, Col, Alert, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
-function Login(){
+function Login() {
+  const { toggleNav, loginUser, isLoggedIn } = useContext(MyContext);
 
-    const {toggleNav,loginUser,isLoggedIn} = useContext(MyContext);
+  const initialState = {
+    userInfo:{
+      username: '',
+      password: '',
+    },
+    errorMsg: '',
+    successMsg: '',
+  }
 
-    const initialState = {
-        userInfo:{
-            username:'',
-            password:'',
-        },
-        errorMsg:'',
+  const [state,setState] = useState(initialState);
+
+  // On change input value (email & password)
+  const onChangeValue = (e) => {
+    setState({
+      ...state,
+      userInfo:{
+        ...state.userInfo,
+        [e.target.name]:e.target.value
+      }
+    });
+  }
+
+  // On Submit Login From
+  const submitForm = async (event) => {
+    event.preventDefault();
+    const data = await loginUser(state.userInfo);
+    if (data.message === 'success' && data.token) {
+      setState({
+        ...initialState,
+      });
+      localStorage.setItem('loginToken', data.token);
+      await isLoggedIn();
+    } else {
+      setState({
+        ...state,
         successMsg:'',
+        errorMsg:data.message
+      });
     }
+  }
 
-    const [state,setState] = useState(initialState);
+  // Show Message on Error or Success
+  let successMsg = '';
+  let errorMsg = '';
+  if (state.errorMsg) {
+    errorMsg = <div className='error-msg'>{state.errorMsg}</div>;
+  }
+  if (state.successMsg) {
+    successMsg = <div className='success-msg'>{state.successMsg}</div>;
+  }
 
-    // On change input value (email & password)
-    const onChangeValue = (e) => {
-        setState({
-            ...state,
-            userInfo:{
-                ...state.userInfo,
-                [e.target.name]:e.target.value
-            }
-        });
-    }
+  return(
+    <div className='_loginRegister'>
+      <Container>
+        <Row className='justify-content-md-center'>
+          <Col xs='6' lg='6'>
+            <h1>Login</h1>
+          </Col>
+        </Row>
+        <Row className='justify-content-md-center'>
+          <Col xs='6' lg='6'>
+            <Form>
+              <Form.Group className='mb-3' controlId='username'>
+                <Form.Label>Username</Form.Label>
+                <Form.Control 
+                  type='text' 
+                  placeholder='Enter username' 
+                  required
+                  defaultValue={state.userInfo.username} 
+                  onChange={onChangeValue} />
+              </Form.Group>
 
-    // On Submit Login From
-    const submitForm = async (event) => {
-        event.preventDefault();
-        const data = await loginUser(state.userInfo);
-        if(data.message==="success" && data.token){
-            setState({
-                ...initialState,
-            });
-            localStorage.setItem('loginToken', data.token);
-            await isLoggedIn();
-        }
-        else{
-            setState({
-                ...state,
-                successMsg:'',
-                errorMsg:data.message
-            });
-        }
-    }
-
-    // Show Message on Error or Success
-    let successMsg = '';
-    let errorMsg = '';
-    if(state.errorMsg){
-        errorMsg = <div className="error-msg">{state.errorMsg}</div>;
-    }
-    if(state.successMsg){
-        successMsg = <div className="success-msg">{state.successMsg}</div>;
-    }
-
-
-
-    return(
-        <div className="_loginRegister">
-            <Container fluid>
-                <Row ClassName="justify-content-md-center">
-                    <Col xs="6" lg="6">
-                        <h1>Login</h1>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <Form>
-                            <Form.Group className="mb-3" controlId="username">
-                                <Form.Label>Username</Form.Label>
-                                <Form.Control 
-                                    type="text" 
-                                    placeholder="Enter username" 
-                                    value={state.userInfo.username} 
-                                    onChange={onChangeValue} />
-                            </Form.Group>
-
-                            <Form.Group className="mb-3" controlId="password">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control 
-                                    type="password" 
-                                    placeholder="Password"
-                                    value={state.userInfo.username} 
-                                    onChange={onChangeValue} />
-                            </Form.Group>
-                            <Button variant="primary" type="submit">
-                                Login
-                            </Button>
-                        </Form>
-                        <Alert variant="danger">
-                            {errorMsg}
-                        </Alert>
-                        <Alert variant="success">
-                            {successMsg}
-                        </Alert>
-                    </Col>
-                </Row>
-            </Container>
-            <div className="_navBtn">
-                <button onClick={toggleNav}>Register</button>
-            </div>
-        </div>
-    );
+              <Form.Group className='mb-3' controlId='password'>
+                <Form.Label>Password</Form.Label>
+                <Form.Control 
+                  type='password' 
+                  placeholder='Password'
+                  required
+                  defaultValue={state.userInfo.username} 
+                  onChange={onChangeValue} />                                    
+                <Form.Control.Feedback>
+                  {errorMsg}
+                </Form.Control.Feedback>
+              </Form.Group>
+              <Button variant='primary' type='submit'>
+                Login
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
 }
 
 export default Login;

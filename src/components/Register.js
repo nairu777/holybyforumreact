@@ -1,87 +1,110 @@
-import React, {useContext,useState} from 'react'
-import {MyContext} from '../context/MyContext'
+import React, { useContext,useState } from 'react'
+import { MyContext } from '../context/MyContext'
+import { Container, Row, Col, Form, Button} from 'react-bootstrap';
 
-function Register(){
-    const {toggleNav,registerUser} = useContext(MyContext);
-    const initialState = {
-        userInfo:{
-            username:'',
-            email:'',
-            password:''
-        },
-        errorMsg:'',
+function Register() {
+  const {toggleNav,registerUser} = useContext(MyContext);
+  const initialState = {
+    userInfo:{
+      username:'',
+      email:'',
+      password:''
+    },
+    errorMsg:'',
+    successMsg:'',
+  };
+  const [state,setState] = useState(initialState);
+
+  // On Submit the Registration Form
+  const submitForm = async (event) => {
+    event.preventDefault();
+    const data = await registerUser(state.userInfo);
+    if(data.success){
+      setState({
+        ...initialState,
+        successMsg:data.message,
+      });
+    }
+    else{
+      setState({
+        ...state,
         successMsg:'',
+        errorMsg:data.message
+      });
     }
-    const [state,setState] = useState(initialState);
+  }
 
-    // On Submit the Registration Form
-    const submitForm = async (event) => {
-        event.preventDefault();
-        const data = await registerUser(state.userInfo);
-        if(data.success){
-            setState({
-                ...initialState,
-                successMsg:data.message,
-            });
-        }
-        else{
-            setState({
-                ...state,
-                successMsg:'',
-                errorMsg:data.message
-            });
-        }
-    }
+  // On change the Input Value (username, email, password)
+  const onChangeValue = (e) => {
+    setState({
+      ...state,
+      userInfo:{
+        ...state.userInfo,
+        [e.target.name]:e.target.value
+      }
+    });
+  }
 
-    // On change the Input Value (username, email, password)
-    const onChangeValue = (e) => {
-        setState({
-            ...state,
-            userInfo:{
-                ...state.userInfo,
-                [e.target.name]:e.target.value
-            }
-        });
-    }
+  // Show Message on Success or Error
+  let successMsg = '';
+  let errorMsg = '';
+  if (state.errorMsg) {
+    errorMsg = <div className='error-msg'>{state.errorMsg}</div>;
+  }
+  if (state.successMsg) {
+    successMsg = <div className='success-msg'>{state.successMsg}</div>;
+  }
 
-    // Show Message on Success or Error
-    let successMsg = '';
-    let errorMsg = '';
-    if(state.errorMsg){
-        errorMsg = <div className="error-msg">{state.errorMsg}</div>;
-    }
-    if(state.successMsg){
-        successMsg = <div className="success-msg">{state.successMsg}</div>;
-    }
+  return (
+    <div className='_loginRegister'>
+      <Container>
+        <Row className='justify-content-md-center'>
+          <Col xs='6' lg='6'>
+            <h1>Sign up</h1>
+          </Col>
+        </Row>
+        <Row className='justify-content-md-center'>
+          <Col xs='6' lg='6'>
+            <Form>
+              <Form.Group className='mb-3' controlId='username'>
+                <Form.Label>Username</Form.Label>
+                <Form.Control 
+                  type='text' 
+                  placeholder='Enter username' 
+                  required
+                  defaultValue={state.userInfo.username} 
+                  onChange={onChangeValue} />
+              </Form.Group>
 
-    return(
-        <div className="_loginRegister">
-            <h1>Sign Up</h1>
-            <form onSubmit={submitForm} noValidate>
-                <div className="form-control">
-                    <label>Username</label>
-                    <input name="username" required type="text" value={state.userInfo.username} onChange={onChangeValue} placeholder="Enter your username"/>
-                </div>
-                <div className="form-control">
-                    <label>Email</label>
-                    <input name="email" required type="email" value={state.userInfo.email} onChange={onChangeValue} placeholder="Enter your email"/>
-                </div>
-                <div className="form-control">
-                    <label>Password</label>
-                    <input name="password" required type="password" value={state.userInfo.password} onChange={onChangeValue} placeholder="Enter your password"/>
-                </div>
+              <Form.Group className='mb-3' controlId='password'>
+                <Form.Label>Email address</Form.Label>
+                <Form.Control 
+                  type='email' 
+                  placeholder='Email address'
+                  required
+                  defaultValue={state.userInfo.email} 
+                  onChange={onChangeValue} />
+              </Form.Group>
 
-                {errorMsg}
-                {successMsg}
-                <div className="form-control">
-                    <button type="submit">Sign Up</button>
-                </div>
-            </form>
-            <div className="_navBtn">
-                <button  onClick={toggleNav}>Login</button>
-            </div>
-        </div>
-    );
+              <Form.Group className='mb-3' controlId='password'>
+                <Form.Label>Password</Form.Label>
+                <Form.Control 
+                  type='password' 
+                  placeholder='Password'
+                  required
+                  defaultValue={state.userInfo.password} 
+                  onChange={onChangeValue} />
+              </Form.Group>
+
+              <Button variant='primary' type='submit'>
+                Sign Up
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
 }
 
-export default Register
+export default Register;

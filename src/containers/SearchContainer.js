@@ -1,8 +1,8 @@
-import SearchTopicList from '../components/search/SearchTopicList'
-import {connect} from 'react-redux'
+import SearchTopicList from '../components/search/SearchTopicList';
+import {connect} from 'react-redux';
 
 const mapStateToProps = state =>({
-    data:state.term
-})
+  data:state.term
+});
 
-export default connect(mapStateToProps)(SearchTopicList)
+export default connect(mapStateToProps)(SearchTopicList);
