@@ -16,7 +16,6 @@ function Header(props) {
         return (
             <div style={props.style} >
                 <Jumbotron>
-
                 <div><h1>Holybe forum</h1></div>
                 </Jumbotron>
                 <Container>
