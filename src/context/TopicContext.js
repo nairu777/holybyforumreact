@@ -3,7 +3,7 @@ import {authAxios} from "./http-common"
 
 //Topics
 const getTopics = (data) => {
-    return authAxios.get("/topics?page=" + data.page).then(result => {
+return authAxios.get("/topics?page=" + data).then(result => {
         //console.log(result.data)
         return result.data
     })

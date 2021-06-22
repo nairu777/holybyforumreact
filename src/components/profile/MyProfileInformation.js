@@ -12,48 +12,43 @@ function MyProfileInformation () {
 
     if (isAuth) {
         return (
-            <div>
-                <h2>profiel</h2>
-                <p>username = {theUser.username}</p>
-                <p>email = {theUser.email}</p>
-            </div>
+            <table>
+                <thead>
+                <tr>
+                    <td >username</td>
+                    <td >{theUser.username}</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td >email</td>
+                    <td>{theUser.email}</td>
+                </tr>
+                <tr>
+                    <td >status</td>
+                    <td>{theUser.status}</td>
+                </tr>
+                <tr>
+                    <td >lid sinds</td>
+                    <td>{theUser.created_at.split("T")[0]}</td>
+                </tr>
+                </tbody>
+            </table>
+            // <div>
+            //     <p>username = {theUser.username}</p>
+            //     <p>email = {theUser.email}</p>
+            //     <p>status = {theUser.status}</p>
+            //     <p>lid geworden op = {theUser.created_at.split("T")[0]}</p>
+            // </div>
         )
     }
     else{
         return (
             <div>
-
                 <p>no user found</p>
             </div>)
     }
 }
 
-
-//     const [users, setUsers] = useState('');
-//
-//     useEffect(()=>{
-//         retrieveUser();
-//     },[]);
-//
-//     const retrieveUser = () =>{
-//         UserContext.getUser()
-//             .then(response =>{
-//                 setUsers(response);
-//                 console.log(response);
-//             })
-//             .catch(e =>{
-//                 console.log(e);
-//             })
-//     };
-//
-//
-//
-//     return(
-//         <div>
-//             <h4>profiel</h4>
-//                 <UserRenderer username={users[0].username} email={users[0].email} status={users[0].status} />
-//         </div>
-//     )
-// };
 
 export default MyProfileInformation;

@@ -16,8 +16,7 @@ function AddTopicPopup() {
 
             return (
             <div>
-                <h3>add topic</h3>
-                <button onClick={onClick}>add topic form</button>
+                <button onClick={onClick}>Nieuw topic</button>
                 {showText ? <AddTopic/> : null}
 
             </div>
