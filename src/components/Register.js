@@ -1,9 +1,9 @@
-import React, { useContext,useState } from 'react'
-import { MyContext } from '../context/MyContext'
+import React, { useContext, useState } from 'react'
+import { MyContext } from './../context/MyContext'
 import { Container, Row, Col, Form, Button} from 'react-bootstrap';
 
 function Register() {
-  const {toggleNav,registerUser} = useContext(MyContext);
+  const { toggleNav, registerUser } = useContext(MyContext);
   const initialState = {
     userInfo:{
       username:'',
@@ -82,6 +82,7 @@ function Register() {
                   type='email' 
                   placeholder='Email address'
                   required
+                  name='email'
                   defaultValue={state.userInfo.email} 
                   onChange={onChangeValue} />
               </Form.Group>
@@ -92,6 +93,7 @@ function Register() {
                   type='password' 
                   placeholder='Password'
                   required
+                  name='password'
                   defaultValue={state.userInfo.password} 
                   onChange={onChangeValue} />
               </Form.Group>

@@ -1,40 +1,54 @@
-import { useEffect, useState } from 'react';
-import UserContext from './../../context/UserContext';
-import UserRenderer from './userRenderer';
 import React, { useContext } from 'react'
 import { MyContext } from './../../context/MyContext';
+import { Row, Col } from 'react-bootstrap';
 
 function MyProfileInformation () {
   const { rootState } = useContext(MyContext);
   const { isAuth, theUser } = rootState;
 
   return (isAuth) ? (
-    <table>
-      <thead>
-        <tr>
-          <td>username</td>
-          <td>{theUser.username}</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>email</td>
-          <td>{theUser.email}</td>
-        </tr>
-        <tr>
-          <td>status</td>
-          <td>{theUser.status}</td>
-        </tr>
-        <tr>
-          <td>lid sinds</td>
-          <td>{theUser.created_at.split('T')[0]}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div>
+      <Row>
+        <Col>
+          Gebruikersnaam
+        </Col>
+        <Col>
+          {theUser.username}
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          Emailadres
+        </Col>
+        <Col>
+          {theUser.email}
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          Status
+        </Col>
+        <Col>
+          {theUser.status}
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          Lid sinds
+        </Col>
+        <Col>
+          {theUser.created_at.split('T')[0]}
+        </Col>
+      </Row>
+    </div>
   ) :
   (
     <div>
-      <p>no user found</p>
+      <Row>
+        <Col>
+          Geen gebruiker gevonden
+        </Col>
+      </Row>
     </div>
   );
 }
