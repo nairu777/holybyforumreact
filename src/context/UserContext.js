@@ -1,14 +1,13 @@
-import {authAxios} from "./http-common"
+import {authAxios} from './http-common';
 
-//get the topics per page(data)
-
+// Get the topics per page(data)
 const getUser = () => {
-    return authAxios.get("/currentuser" ).then(result => {
-        console.log(result.data)
-        return result.data
-    })
+  return authAxios.get('/currentuser').then(result => {
+    console.log(result.data);
+    return result.data;
+  });
 }
 
-export default{
-    getUser
+export default {
+  getUser
 };
