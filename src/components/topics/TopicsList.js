@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TopicContextService from './../../context/TopicContext';
 import TopicRenderer from './TopicRenderer';
-//todo pagination
+//todo: pagination
 
 //render a list of topics based on page
 const TopicList = () => {

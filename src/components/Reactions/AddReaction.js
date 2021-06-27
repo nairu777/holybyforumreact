@@ -51,7 +51,6 @@ const AddReaction = (props) => {
       </div>
       ) : (
       <div className='form-group'>
-        <label htmlFor='content'>Content</label>
         <input
           type='text'
           className='form-control'
@@ -61,7 +60,7 @@ const AddReaction = (props) => {
           onChange={handleInputChange}
           name='content' />
         <button onClick={saveReaction} className='btn btn-success'>
-          Submit
+          Voeg toe
         </button>
       </div>
       )}

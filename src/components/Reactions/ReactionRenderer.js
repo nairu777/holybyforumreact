@@ -47,10 +47,10 @@ const ReactionRenderer = (props) => {
       isEditable? (
         <>
           <button onClick={toggleEdit} >
-            edit reaction
+            Wijzig reactie
           </button>
           <button onClick={deleteReaction} >
-            Delete reaction
+            Verwijder reactie
           </button>
         </>
       ) : null

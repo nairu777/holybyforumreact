@@ -35,7 +35,7 @@ function Header(props) {
             </Col>
             <Col xs={6} md={4}>
               <div  style={props.style} >
-                <button onClick={logoutUser}>Logout</button>
+                <button onClick={logoutUser}>Log uit</button>
               </div>
             </Col>
           </Row>

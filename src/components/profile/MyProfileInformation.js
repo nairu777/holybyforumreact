@@ -12,17 +12,17 @@ function MyProfileInformation () {
     <table>
       <thead>
         <tr>
-          <td>username</td>
+          <td>Gebruikersnaam</td>
           <td>{theUser.username}</td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>email</td>
+          <td>Email</td>
           <td>{theUser.email}</td>
         </tr>
         <tr>
-          <td>status</td>
+          <td>Status</td>
           <td>{theUser.status}</td>
         </tr>
         <tr>

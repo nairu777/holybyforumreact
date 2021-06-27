@@ -43,7 +43,6 @@ const ReactionsList = (props) => {
 
   return(
     <div>
-      <h4>Topic with reaction list</h4>
       {
         topics.map((topic) => (
           <div>

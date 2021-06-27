@@ -10,12 +10,12 @@ function Reactions(props) {
 
   return(
     <div>
-      <h1>Topic with Reaction</h1>
+      <h1>Topic met reacties</h1>
       <div>
         <ReactionsList topicid={topicid}/>
       </div>
       <div>
-        <h3>add reaction</h3>
+        <h3>Voeg een reactie toe</h3>
         <AddReaction topicId={topicid}/>
       </div>
       <Link to='/'>
