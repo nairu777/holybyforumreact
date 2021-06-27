@@ -65,13 +65,14 @@ function Register() {
         </Row>
         <Row className='justify-content-md-center'>
           <Col xs='6' lg='6'>
-            <Form>
+            <Form onSubmit={submitForm} noValidat>
               <Form.Group className='mb-3' controlId='username'>
                 <Form.Label>Username</Form.Label>
                 <Form.Control 
                   type='text' 
                   placeholder='Enter username' 
                   required
+                  name='username'
                   defaultValue={state.userInfo.username} 
                   onChange={onChangeValue} />
               </Form.Group>
@@ -82,6 +83,7 @@ function Register() {
                   type='email' 
                   placeholder='Email address'
                   required
+                  name='email'
                   defaultValue={state.userInfo.email} 
                   onChange={onChangeValue} />
               </Form.Group>
@@ -92,6 +94,7 @@ function Register() {
                   type='password' 
                   placeholder='Password'
                   required
+                  name='password'
                   defaultValue={state.userInfo.password} 
                   onChange={onChangeValue} />
               </Form.Group>
