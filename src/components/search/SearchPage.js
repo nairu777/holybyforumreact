@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import SearchList from './SearchTopicList';
-
+//todo: implement search
 const SearchPage = (props) => {
   const [input, setInput] = useState('');
   const [searchListDefault, setSearchListDefault] = useState();

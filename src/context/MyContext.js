@@ -54,7 +54,6 @@ class MyContextProvider extends Component
       username: user.username,
       password: user.password
     });
-
     return login.data;
   }
 
@@ -78,7 +77,9 @@ class MyContextProvider extends Component
           isAuth: true,
           theUser: data.user
         });
+        console.log(data.user.username)
       }
+
     }
   }
 

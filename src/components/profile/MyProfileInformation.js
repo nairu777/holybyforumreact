@@ -18,7 +18,7 @@ function MyProfileInformation () {
       </Row>
       <Row>
         <Col>
-          Emailadres
+          Email
         </Col>
         <Col>
           {theUser.email}

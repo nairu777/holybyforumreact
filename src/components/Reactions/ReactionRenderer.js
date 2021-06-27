@@ -56,12 +56,12 @@ const ReactionRenderer = (props) => {
                   <Row>
                     <Col xs={6} sm={2}>
                       <Button variant='secondary' onClick={toggleEdit}>
-                        Wijzigen
+                        Wijzig reactie
                       </Button>
                     </Col>
                     <Col xs={6} sm={2}>
                       <Button  variant='danger' onClick={deleteReaction}>
-                        Verwijderen
+                        Verwijder reactie
                       </Button>
                     </Col>
                   </Row>

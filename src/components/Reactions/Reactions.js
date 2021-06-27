@@ -21,7 +21,7 @@ function Reactions(props) {
         </Row>
         <Row className='justify-content-md-center'>
           <Col>
-            <h3>Reageren</h3>
+            <h3>Voeg een reactie toe</h3>
             <AddReaction topicId={topicid}/>
           </Col>
         </Row>

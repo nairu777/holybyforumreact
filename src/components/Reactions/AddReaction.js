@@ -80,7 +80,7 @@ const AddReaction = (props) => {
                   name='content' />
               </Form.Group>              
               <Button variant='primary' onClick={saveReaction}>
-                Reactie toevoegen
+                Voeg toe
               </Button>
             </Form>
           </Col>

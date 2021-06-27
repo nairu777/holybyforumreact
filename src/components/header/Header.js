@@ -33,7 +33,7 @@ function Header(props) {
               <Link to='/profile'><span>{theUser.username}</span></Link>
             </Navbar.Text>
             <Button variant='light' onClick={logoutUser}>
-              Logout
+              Log uit
             </Button>
           </Navbar.Collapse>
         </Container>

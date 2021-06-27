@@ -3,15 +3,14 @@ import { MyContext } from './../context/MyContext';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 function Login() {
-  const { toggleNav, loginUser, isLoggedIn } = useContext(MyContext);
+  const { loginUser, isLoggedIn } = useContext(MyContext);
 
   const initialState = {
     userInfo:{
       username: '',
       password: '',
     },
-    errorMsg: '',
-    successMsg: '',
+    errorMsg: ''
   }
 
   const [state,setState] = useState(initialState);
@@ -46,15 +45,13 @@ function Login() {
     }
   }
 
-  // Show Message on Error or Success
-  let successMsg = '';
+  // Show Message on Error
+
   let errorMsg = '';
   if (state.errorMsg) {
     errorMsg = <div className='error-msg'>{state.errorMsg}</div>;
   }
-  if (state.successMsg) {
-    successMsg = <div className='success-msg'>{state.successMsg}</div>;
-  }
+
 
   return(
     <div className='_loginRegister'>
@@ -66,7 +63,7 @@ function Login() {
         </Row>
         <Row className='justify-content-md-center'>
           <Col xs='6' lg='6'>
-            <Form>
+            <Form onSubmit={submitForm} noValidate>
               <Form.Group className='mb-3' controlId='username'>
                 <Form.Label>Username</Form.Label>
                 <Form.Control 
